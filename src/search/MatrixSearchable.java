@@ -1,9 +1,10 @@
 package search;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatrixSearchable implements Searchable {
+public class MatrixSearchable implements Searchable, Serializable {
 
 	/*
 	 * State: 2D array of pairs: (State, Original Cost)
@@ -70,5 +71,30 @@ public class MatrixSearchable implements Searchable {
 			list.add(states[x][y + 1]);
 		
 		return list;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for(Tuple<State, Double>[] stateRow : this.states) {
+			for(Tuple<State, Double> state : stateRow) {
+				sb.append(state.getElement1()).append('(').append(state.getElement2()).append(')').append(',');
+			}
+			sb.append('\n');
+		}
+		sb.append("end\n");
+		sb.append(this.initial).append('\n');
+		sb.append(this.goal).append('\n');
+		return sb.toString();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this.hashCode() == obj.hashCode();
+	}
+
+	@Override
+	public int hashCode() {
+		return this.toString().hashCode();
 	}
 }

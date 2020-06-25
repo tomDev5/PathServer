@@ -1,7 +1,8 @@
 package server;
 
 public interface CacheManager<P, S> {
-	public boolean Search(P problem);
-	public void addCache(P problem, S solution);
-	public S getCache(P problem);
+	boolean hasCache(P problem);
+	void addCache(P problem, S solution);
+	S getCache(P problem);
+	void saveCache();
 }

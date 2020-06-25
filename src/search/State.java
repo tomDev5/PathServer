@@ -1,6 +1,8 @@
 package search;
 
-public class State implements Comparable<State> {
+import java.io.Serializable;
+
+public class State implements Comparable<State>, Serializable {
 	private String name;
 	private double cost;
 	private State cameFrom;
@@ -45,5 +47,10 @@ public class State implements Comparable<State> {
 	@Override
 	public int compareTo(State other) {
 		return this.cost > other.cost ? 1 : -1;
+	}
+
+	@Override
+	public String toString() {
+		return this.name + "(" + this.cost + ")";
 	}
 }

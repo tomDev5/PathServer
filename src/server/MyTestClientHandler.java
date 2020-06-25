@@ -25,7 +25,7 @@ public class MyTestClientHandler implements ClientHandler {
 				if(line.equals("end"))
 					break;
 				
-				if(fileCacheManager.Search(line))
+				if(fileCacheManager.hasCache(line))
 					writer.println(fileCacheManager.getCache(line));
 				else {
 					String solution = stringReverser.solve(line);
